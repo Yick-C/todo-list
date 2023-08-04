@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+<div class="box">
+    <h1 id="heading">Work List</h1>
+</div>
+<div class="box">
+        <% allWorkNotes.forEach(function (element) { %>
+            <li class="item">
+                <input type="checkbox">
+                <p><%= element %></p>
+            </li>
+        <% }) %>
+
+    <form action="/work" method="POST" id="form">
+        <input type="text" placeholder="New Note" name="newWorkNote" required>
+        <button type="submit" name="button" value="submit">+</button>
+    </form>
+</div>
+<%- include("partials/footer.ejs") %>

@@ -16,10 +16,20 @@ app.get("/", (req, res) => {
     res.render("index.ejs", {nowDate: todaysDate, allNotes: notes});
 })
 
+app.get("/work", (req, res) => {
+    res.render("work.ejs", {allWorkNotes: workNotes});
+})
+
 app.post("/", (req, res) => {
     var note = req.body.newNote;
     notes.push(note);
     res.redirect(("/"));
+})
+
+app.post("/work", (req, res) => {
+    var workNote = req.body.newWorkNote;
+    workNotes.push(workNote);
+    res.redirect(("/work"));
 })
 
 app.listen(port, () => {
@@ -29,3 +39,4 @@ app.listen(port, () => {
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 var notes = [];
+var workNotes = [];
