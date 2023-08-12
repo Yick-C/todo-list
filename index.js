@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import _ from 'lodash';
 import dotenv from 'dotenv';
 
+import Item from './models/item.js';
+import List from './models/list.js';
+
 dotenv.config();
 
 const app = express();
@@ -30,13 +33,6 @@ async function run() {
 
 run();
 
-// Create schema, model and default items
-const itemsSchema = {
-    name: String
-};
-
-const Item = mongoose.model("Item", itemsSchema)
-
 const item1 = new Item({
     name: "Welcome to your todolist!"
 });
@@ -50,14 +46,6 @@ const item3 = new Item({
 });
 
 const defaultItems = [item1, item2, item3];
-
-// Create list schema and model
-const listSchema = {
-    name: String,
-    items: [itemsSchema]
-};
-
-const List = mongoose.model("List", listSchema);
 
 app.get("/", (req, res) => {
     const d = new Date();
