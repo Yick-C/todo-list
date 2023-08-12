@@ -1,6 +1,6 @@
 html {
   background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+  background-image: -webkit-linear-gradient(65deg, #FFCACC 50%, #FAF3F0 50%);
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
@@ -19,7 +19,7 @@ h1 {
 }
 
 #heading {
-  background-color: #A683E3;
+  background-color: #b590d8;
   text-align: center;
 }
 
@@ -51,7 +51,7 @@ p {
   color: #00204a;
 }
 
-form {
+form.item {
   text-align: center;
   margin-left: 20px;
 }
@@ -61,7 +61,7 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #A683E3;
+  background-color: #b590d8;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
@@ -69,7 +69,7 @@ button {
 }
 
 button:hover {
-  background-color: #ac8fdd;
+  background-color: #c8b9d6;
   color: white;
 }
 
@@ -101,6 +101,10 @@ footer {
 }
 
 /*----------bootstrap-navbar-css------------*/
+.nav-link:hover{
+  color:#c8b9d6;
+}
+
 .navbar-mainbg {
   padding: 0px;
 }
