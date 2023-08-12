@@ -4,9 +4,13 @@ import _ from 'lodash';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 3000;
+const username = encodeURIComponent(process.env.DB_USERNAME);
+const password = encodeURIComponent(process.env.DB_PASSWORD);
 
+let uri = `mongodb+srv://${username}:${password}@cluster0.injhwvg.mongodb.net/todolistDB?retryWrites=true&w=majority`;
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended: true}));
@@ -14,7 +18,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // Setup items database and record schema
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true })
+mongoose.connect(uri)
 .then(function(){
     console.log("Connected successfully to the database!");
 })
