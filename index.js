@@ -18,13 +18,17 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // Setup items database and record schema
-try {
-    await mongoose.connect(uri);
-    console.log("Connected successfully to the database!");
+async function run() {
+    try {
+        await mongoose.connect(uri);
+        console.log("Connected successfully to the database!");
+    }
+    catch (err) {
+        console.log("Database connection failed");
+    }
 }
-catch (err) {
-    console.log("Database connection failed");
-}
+
+run();
 
 // Create schema, model and default items
 const itemsSchema = {
@@ -83,8 +87,6 @@ app.post("/", (req, res) => {
     const note = req.body.newNote;
     const listName = req.body.list;
 
-    console.log(note);
-    console.log(listName);
     const newItem = new Item({
         name: note
     });
