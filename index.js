@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.set('view engine', 'ejs');
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // Setup items database and record schema
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true })
 .then(function(){
     console.log("Connected successfully to the database!");
 })
