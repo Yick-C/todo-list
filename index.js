@@ -18,13 +18,13 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // Setup items database and record schema
-mongoose.connect(uri)
-.then(function(){
+try {
+    await mongoose.connect(uri);
     console.log("Connected successfully to the database!");
-})
-.catch(function(){
+}
+catch (err) {
     console.log("Database connection failed");
-});
+}
 
 // Create schema, model and default items
 const itemsSchema = {
